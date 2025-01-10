@@ -75,7 +75,7 @@ Nosso projeto inclui um Mini-cart funcional, que conta com um contador de produt
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://github.com/danilodev7/cadastra
    ```
 
 2. Instale as dependências:
