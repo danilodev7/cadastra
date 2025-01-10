@@ -1,12 +1,14 @@
 {
-n  "version": "1.0.0",
+  "version": "1.0.0",
   "description": "Desafio da Cadastra para novos colaboradores",
   "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/cross-env SERVER_API=http://localhost:5000 npm-run-all --parallel dev server",
     "start:gp": "npm-run-all --parallel dev server",
     "dev": "gulp",
-    "server": "json-server ./db.json --port 5000"
+    "server": "json-server ./db.json --port 5000",
+    "clean": "gulp clean",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,8 @@ n  "version": "1.0.0",
     "sass": "^1.43.4",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.3",
-    "webpack": "^5.62.1"
+    "webpack": "^5.62.1",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
