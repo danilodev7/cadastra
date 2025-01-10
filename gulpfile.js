@@ -8,14 +8,13 @@ const autoprefixer = require("gulp-autoprefixer");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
-const imagemin = require("gulp-imagemin");
 
 const webpackConfig = require("./webpack.config.js");
 
 const paths = {
   images: {
-    src: 'src/images/**/*.{jpg,jpeg,png,gif,svg}',
-    dest: 'dist/images'
+    src: 'src/img/**/*.{jpg,jpeg,png,gif,svg}',
+    dest: 'dist/img'
   },
   scripts: {
     src: "src/ts/index.ts",
@@ -76,16 +75,17 @@ function img() {
   return src(paths.img.src).pipe(dest(paths.dest + "/img"));
 }
 
-function optimizeImages() {
+async function optimizeImages() {
+  const imagemin = await import('gulp-imagemin');
   return src(paths.images.src)
-    .pipe(imagemin([
+    .pipe(imagemin.default([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.mozjpeg({ quality: 75, progressive: true }),
       imagemin.optipng({ optimizationLevel: 5 }),
       imagemin.svgo({
         plugins: [
-          { removeViewBox: true },
-          { cleanupIDs: false }
+          { name: 'removeViewBox', active: true },
+          { name: 'cleanupIDs', active: false }
         ]
       })
     ]))
