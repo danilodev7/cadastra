@@ -2,21 +2,28 @@ const path = require("path");
 
 const { series, src, dest, parallel, watch } = require("gulp");
 const webpack = require("webpack");
+const webpackStream = require("webpack-stream");
 const del = require("del");
 const autoprefixer = require("gulp-autoprefixer");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require("browser-sync").create();
+const imagemin = require("gulp-imagemin");
 
 const webpackConfig = require("./webpack.config.js");
 
 const paths = {
+  images: {
+    src: 'src/images/**/*.{jpg,jpeg,png,gif,svg}',
+    dest: 'dist/images'
+  },
   scripts: {
     src: "src/ts/index.ts",
     watch: "src/ts/**/*.ts",
   },
   styles: {
     src: "src/scss/main.scss",
+    watch: "src/scss/**/*.scss",
   },
   img: {
     src: "src/img/**/*",
@@ -55,45 +62,45 @@ function styles() {
 }
 
 function scripts() {
-  return new Promise((resolve) =>
-    webpack(webpackConfig(paths), (err, stats) => {
-      if (err) console.log("Webpack", err);
-
-      console.log(
-        stats.toString({
-          all: false,
-          modules: true,
-          maxModules: 0,
-          errors: true,
-          warnings: true,
-          moduleTrace: true,
-          errorDetails: true,
-          colors: true,
-          chunks: true,
-        })
-      );
-
-      resolve();
-    })
-  );
+  return src(paths.scripts.src)
+    .pipe(webpackStream(webpackConfig(paths), webpack))
+    .pipe(dest(paths.dest))
+    .pipe(browserSync.stream());
 }
 
 function html() {
-  return src(paths.html.src).pipe(browserSync.stream()).pipe(dest(paths.dest));
+  return src(paths.html.src).pipe(dest(paths.dest)).pipe(browserSync.stream());
 }
 
 function img() {
   return src(paths.img.src).pipe(dest(paths.dest + "/img"));
 }
 
-const build = series(clean, parallel(styles, scripts, html, img));
+function optimizeImages() {
+  return src(paths.images.src)
+    .pipe(imagemin([
+      imagemin.gifsicle({ interlaced: true }),
+      imagemin.mozjpeg({ quality: 75, progressive: true }),
+      imagemin.optipng({ optimizationLevel: 5 }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: true },
+          { cleanupIDs: false }
+        ]
+      })
+    ]))
+    .pipe(dest(paths.images.dest));
+}
+
+const build = series(clean, parallel(styles, scripts, html, img, optimizeImages));
 const dev = () => {
   watch(paths.scripts.watch, { ignoreInitial: false }, scripts).on(
     "change",
     browserSync.reload
   );
-  watch(paths.styles.src, { ignoreInitial: false }, styles);
+  watch(paths.styles.watch, { ignoreInitial: false }, styles);
   watch(paths.img.src, { ignoreInitial: false }, img);
+  watch(paths.images.src, { ignoreInitial: false }, optimizeImages);
   watch(paths.html.src, { ignoreInitial: false }, html).on(
     "change",
     browserSync.reload
@@ -105,4 +112,6 @@ exports.build = build;
 exports.server = server;
 exports.styles = styles;
 exports.scripts = scripts;
+exports.optimizeImages = optimizeImages;
 exports.default = dev;
+exports.clean = clean;
