@@ -1,76 +1,99 @@
-# Venha ser um desenvolvedor da Cadastra
+# 🛒 Projeto de E-Commerce
 
-Olá! Somos a Cadastra, uma Next-Gen Company que oferece soluções globais em marketing, tecnologia, estratégia de negócios, commerce, dados e analytics. Este desafio é voltado para o nosso Centro de Excelência (COE) de Commerce, especializado em implantação, migração, evolução e otimização de e-commerce.  Contamos com escritórios em 5 países, mas num formato de trabalho 100% home office.
+Bem-vindo ao projeto de E-Commerce! Este projeto é uma aplicação web para um site de comércio eletrônico, onde os usuários podem visualizar produtos, aplicar filtros, ordenar produtos e adicionar itens ao carrinho de compras.
 
-Estamos em busca de Pessoas Desenvolvedoras `Front-end`, com sólidos conhecimentos em HTML, CSS e TS para projetar interfaces e entregar a melhor experiência para os consumidores visando sempre a otimização do código e agilidade no desenvolvimento.
+## 🚀 Tecnologias Utilizadas
 
-## O que procuramos
+- **TypeScript**: Linguagem de programação que estende o JavaScript adicionando tipos estáticos.
+- **HTML5**: Linguagem de marcação utilizada para estruturar o conteúdo da web.
+- **CSS3**: Linguagem de estilo utilizada para estilizar o conteúdo da web.
+- **API**: Interface para realizar requisições HTTP assíncronas.
 
-### Requisitos Obrigatórios
+## 📂 Estrutura do Projeto
 
-- Html5, css3;
-- Javascript/Typescript;
-- Consumo de APIs.
-- Versionamento Git;
-- Grunt/gulp;
-- Sass/less;
-- Nodejs
-- Sites responsivos;
-- Iniciativa, criatividade e colaboração;
-- Boas práticas: reutilização de código, semântica, organização, performance.
+- **src/ts**: Contém os arquivos TypeScript.
+  - `Product.ts`: Define a interface `Product`.
+  - `index.ts`: Arquivo principal que inicializa a aplicação.
+  - `api.ts`: Função para buscar produtos do servidor.
+- **src/components**: Contém os componentes da aplicação.
+  - `setupCart.ts`: Configura o carrinho de compras.
+  - `setupCartModal.ts`: Configura o modal do carrinho de compras.
+  - `setupFilters.ts`: Configura os filtros de produtos.
+  - `setupFilterModal.ts`: Configura o modal de filtros.
+  - `setupSortModal.ts`: Configura o modal de ordenação.
+  - `renderProducts.ts`: Função para renderizar os produtos na página.
+  - `filtersProduct/colorFilter.ts`: Cria o filtro de cores.
+  - `filtersProduct/sizeFilter.ts`: Cria o filtro de tamanhos.
+  - `filtersProduct/priceFilter.ts`: Cria o filtro de preços.
+  - `filtersProduct/sortFilter.ts`: Cria o filtro de ordenação.
 
-### Desejáveis:
+## 📜 Métodos Principais
 
-- Experiência com algum CMS
-- Conhecimento/Experiência em Vtex
-- Nodejs
+### `fetchProducts(page: number = 1, limit: number = 9): Promise<Product[]>`
+Busca produtos do servidor com paginação.
 
-----
+### `setupCart()`
+Configura o carrinho de compras e atualiza a exibição do carrinho.
 
-## Como se candidatar a vaga
+### `setupCartModal()`
+Configura o modal do carrinho de compras.
 
-- [Crie um fork desse projeto;](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra/fork)
-- No seu fork, codifique o layout seguindo as instruções abaixo;
-- Atualize o readme com as instruções necessárias para rodar o seu código;
-- Adicione também seu e-mail de contato ao readme do projeto ( caso seu e-mail do github esteja privado )
-- envie para [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Vaga%20DEV%20-%20Cadastra) com cópia para [andresa.klein@cadastra.com](mailto:andresa.klein?subject=Vaga%20DEV%20-%20Cadastra)
- 
+### `setupFilters(products: Product[])`
+Configura os filtros de produtos.
 
-**obs.**: link do projeto [github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra](https://github.com/Cadastra-Next-Gen-Company/desenvolvedor-cadastra)
+### `setupFilterModal(products: Product[])`
+Configura o modal de filtros.
 
-### Instruções para o teste
+### `setupSortModal(products: Product[])`
+Configura o modal de ordenação.
 
-O layout se encontra no [figma](https://www.figma.com/file/Z5RCG3Ewzwm7XIPuhMUsBZ/Desafio-Cadastra?type=design&node-id=0%3A1&mode=design&t=A0G2fRjMSrcQjchw-1).
+### `renderProducts(products: Product[], append: boolean = false)`
+Renderiza os produtos na página.
 
-### Dependências
+## 📦 Dependências
 
-O projeto possui um setup pronto no qual há a necessidade de possuir o nodejs instalado na versão 14 ou superior.
+### Produção
+- **TypeScript**
+- **HTML5**
+- **CSS3**
+- **Fetch API**
 
-Para instalar as dependências só é preciso executar o comando: `npm install`
+### Desenvolvimento
+- **Webpack**: Empacotador de módulos JavaScript.
+- **Babel**: Transpilador JavaScript.
+- **ESLint**: Ferramenta de linting para JavaScript/TypeScript.
+- **Prettier**: Formatador de código.
 
-O dar start no server e nos processos para desenvolvimento é necessário rodar o comando: `npm start `
+## 🛠️ Execução do Projeto
 
-Uma ver que o comando é dado ele irá levantar 2 servidores, sendo eles:
- - um para acessar o front-end que roda na porta 3000. No qual pode ser acessado pela url: http://localhost:3000
- - um para o json-server que irá export uma api com a lista de produtos que roda na porta 5000. Para acessar os produtos é na url:  http://localhost:5000/products
+### Ambiente de Desenvolvimento
 
-### Objetivo
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
 
-O objetivo desse desafio é avaliar a seus conhecimentos fundamentais de front end, por isso pedimos que não utilize nenhum framework, porem caso deseje utilizar frameworks como react, é possível adicionar ao setup.
-### Obrigatório
+2. Instale as dependências:
+   ```bash
+   npm install
 
-- HTML5 e CSS3
-- Typescript
-- Requisição a API para obter os produtos
-- Funcionalidade: Filtrar produtos por cor, tamanho e preço.
-- Funcionalidade: Adicionar produto ao carrinho.
-- Funcionalidade: Carregar mais produtos.
-- Não utilizar Bootstrap, Foundation Css, Semantic ui ou semelhantes ;
-- Responsividade
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
 
-#### Bônus
+### Ambiente de Desenvolvimento   
 
-- Typescript com clean code
-- Adição de processo no gulp para otimizar imagens
+1. Gere o build de produção:
+   ```bash
+   npm run build
 
-##### Dúvidas: [vinicius.delfino@cadastra.com](mailto:vinicius.delfino@cadastra.com?subject=Dúvida%20Vaga%20DEV%20-%20Cadastra)
+2. Inicie o servidor:
+   ```bash
+   npm start
+
+## 📧 Contato
+
+Para mais informações, entre em contato pelo e-mail: [danilodev7@gmail.com](mailto:danilodev7@gmail.com)
+
+---
+
+Feito com ❤️ por Danilo Dev
