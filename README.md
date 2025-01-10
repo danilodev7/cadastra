@@ -76,24 +76,33 @@ Nosso projeto inclui um Mini-cart funcional, que conta com um contador de produt
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
 
 2. Instale as dependências:
    ```bash
    npm install
+   ```
 
 3. Inicie o servidor de desenvolvimento:
    ```bash
    npm run dev
+   ```
 
-### Ambiente de Desenvolvimento   
+   O projeto irá levantar dois servidores:
+   - Front-end: Acessível em [http://localhost:3000](http://localhost:3000)
+   - JSON Server (API de produtos): Acessível em [http://localhost:5000/products](http://localhost:5000/products)
+
+### Ambiente de Produção
 
 1. Gere o build de produção:
    ```bash
    npm run build
+   ```
 
 2. Inicie o servidor:
    ```bash
    npm start
+   ```
 
 ## 📧 Contato
 
