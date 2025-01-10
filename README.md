@@ -50,6 +50,11 @@ Configura o modal de ordenação.
 ### `renderProducts(products: Product[], append: boolean = false)`
 Renderiza os produtos na página.
 
+## 🌟 Funcionalidades Extras
+
+### Mini-cart Funcional
+Nosso projeto inclui um Mini-cart funcional, que conta com um contador de produtos adicionados ao carrinho e cálculo de preço final com atualização em tempo real. Não deixe de testar essa funcionalidade extra para uma experiência de compra mais dinâmica e interativa!
+
 ## 📦 Dependências
 
 ### Produção
