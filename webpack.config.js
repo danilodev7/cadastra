@@ -10,15 +10,17 @@ module.exports = (paths) => ({
     filename: "bundle.js",
   },
   mode: "development",
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
-        include: path.resolve(__dirname, paths.scripts.src),
         use: "ts-loader",
       },
     ],
   },
-  plugins: [],
+  devtool: "source-map",
 });
