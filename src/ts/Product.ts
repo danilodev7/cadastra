@@ -7,4 +7,5 @@ export interface Product {
   image: string;
   size: Array<string>;
   date: string;
+  description: string;
 }
