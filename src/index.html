@@ -1,19 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvedor Cadastra</title>
-  <link rel="stylesheet" href="main.css" />
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvedor Cadastra</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
 
-<body>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./img/cadastra.png" alt="Cadastra"/>
+      </div>
+      <div class="cart-icon">
+        <img src="./img/cart.svg" alt="Carrinho"/>
+        <div class="cart-count">0</div>
+      </div>
+    </header>
 
-</body>
-<h1>Desafio Cadastra</h1>
+    <main>
+      <h1>Categoria</h1>
+      <aside id="filters"></aside>
+      <div class="responsive-buttons">
+        <button id="responsive-filter">Filtrar</button>
+        <button id="responsive-sort">Ordenar</button>
+      </div>
+      <section id="products">
+        <div id="product-list"></div>
+        <div class="load-more">
+          <button id="load-more">Carregar mais</button>
+        </div>
+      </section>
+      
+    </main>
 
-<script src="bundle.js"></script>
+    <footer>
+      <p>Cadastra Implantação de E-Commerce Vtex © 2025</p>
+    </footer>
 
+  <script src="bundle.js"></script>
+  </body>
 </html>
